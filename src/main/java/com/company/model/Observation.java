@@ -1,11 +1,13 @@
 package com.company.model;
 
 import com.company.model.animal.*;
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDate;
 
 public class Observation {
-    private int id = 0;
-    private int quantity;
+    private static int idAll;
+    private int id, quantity;
     private String name, image, comment;
     private Animal animal;
     private Location location;
@@ -14,7 +16,9 @@ public class Observation {
     public Observation(){
     }
     public Observation(int quantity, String name, String image, String comment, Animal animal, Location location, LocalDate date) {
-        id++;
+        this.id = idAll;
+        idAll++;
+        System.out.println(idAll + " - " + id);
         this.quantity = quantity;
         this.name = name;
         this.image = image;
@@ -78,9 +82,9 @@ public class Observation {
 
     @Override
     public String toString() {
-        return "Observation (" + name + " (id:" + id + ")) was done " + date + " at location:\n\t" +
+        return "\nObservation (" + name + " (id:" + id + ")) was done " + date + " at location:\n\t" +
                 location + "\n" +
                 "on the animal: " + animal.getName() + "\n" +
-                "Comment:\n" + comment;
+                "Comment:\n" + comment + "\n\n";
     }
 }

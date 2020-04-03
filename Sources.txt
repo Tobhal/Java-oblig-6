@@ -14,6 +14,7 @@
 | Kilder til programering |
 ***************************
 - https://stackoverflow.com/questions/14926148/java-enum-usage-getting-and-setting
+-https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line
 
 - https://www.geeksforgeeks.org/localdate-format-method-in-java/
 
@@ -21,3 +22,13 @@
 
 - https://github.com/larseknu/programmering2_2020/tree/master/Forelesning15_Uke09_Lambda
 - https://www.geeksforgeeks.org/convert-double-to-integer-in-java/
+
+- https://stackoverflow.com/questions/2817695/how-does-java-order-items-in-a-hashmap-or-a-hashtable     -> for å finne ut hvorfor hashMapet var "sortert tilfeldig"
+
+
+Random things
+- https://www.rangen.co.uk/world/planetgen.php
+- https://donjon.bin.sh/scifi/system/index.cgi
+- https://perchance.org/scientific-species-name
+- http://nmsgen.com/#
+- https://www.random.org/geographic-coordinates/
