@@ -26,6 +26,23 @@ public class Amphibian extends Animal {
         this.group = group;
     }
 
+    public void setProp(String prop, String value) {
+        switch (prop.toLowerCase()) {
+            case "name":
+            case "animal_name":
+                setName(value);
+                break;
+            case "sientificName":
+            case "animal_sientificName":
+                setScientificName(value);
+                break;
+            case "mod":
+            case "animal_mod":
+                setGroup(Groups.valueOf(value.toUpperCase()));
+                break;
+        }
+    }
+
     @Override
     public String toString() {
         return getScientificName() + " (" + getName() + ") is part of the group " + group;

@@ -31,6 +31,32 @@ public class Star extends CelestialBody {
     }
 
     public static String toCSVFormat() {
-        return "Planet_Star_name,Planet_Star_radius,Planet_Star_mass,Planet_Star_effectiveTemperature,";
+        return "Star_name,Star_radius,Star_mass,Star_effectiveTemperature,";
+    }
+
+    @Override
+    public void setProp(String prop, String value) {
+        switch (prop.toLowerCase()) {
+            case "name":
+            case "planet_name":
+                setName(value);
+                break;
+            case "radius":
+            case "planet_radius":
+                setRadius(Double.parseDouble(value));
+                break;
+            case "mass":
+            case "planet_mass":
+                setMass(Double.parseDouble(value));
+                break;
+            case "effectivetemperature":
+            case "sun_effectivetemperature":
+                setEffectiveTemperature(Double.parseDouble(value));
+                break;
+            case "image":
+            case "star_image":
+                setPictureUrl(value);
+                break;
+        }
     }
 }

@@ -1,21 +1,22 @@
 package com.company.model;
 
 import com.company.model.animal.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.naming.Name;
 import java.time.LocalDate;
+import java.util.List;
 
-public class Observation {
+public class Observation implements ICSVRead{
     private static int idAll;
     private int id, quantity;
-    private String name, image, comment;
+    private String name, image, comment, date;
     private Animal animal;
     private Location location;
-    private LocalDate date;
 
     public Observation(){
     }
-    public Observation(int quantity, String name, Animal animal, Location location, LocalDate date, String image, String comment) {
+    public Observation(int quantity, String name, Animal animal, Location location, String date, String image, String comment) {
         this.id = idAll;
         idAll++;
         this.quantity = quantity;
@@ -49,7 +50,7 @@ public class Observation {
     public Location getLocation() {
         return location;
     }
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -75,9 +76,11 @@ public class Observation {
     public void setLocation(Location location) {
         this.location = location;
     }
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
+
+
 
     @Override
     public String toString() {
@@ -95,6 +98,29 @@ public class Observation {
     }
 
     public static String toCSVFormat() {
-        return "ID,Name,Quantity," + new Bird().toCSVFormat() + new Location().toCSVFormat() + "Date,Image,Planet_Image,Planet_Star_image,Comment";
+        return "ID,Name,Quantity," + new Bird().toCSVFormat() + new Location().toCSVFormat() + "Date,Image,Planet_Image,Star_image,Comment";
+    }
+
+    @Override
+    public void setProp(String prop, String value) {
+        switch (prop.toLowerCase()) {
+            case "id":
+                setId(Integer.parseInt(value));
+                break;
+            case "name":
+                setName(value);
+                break;
+            case "quantity":
+                setQuantity(Integer.parseInt(value));
+                break;
+            case "date":
+                setDate(value);
+                break;
+            case "image":
+                setImage(value);
+                break;
+            case "comment":
+                setComment(value);
+        }
     }
 }

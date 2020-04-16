@@ -1,6 +1,21 @@
 package com.company.model.animal;
 
-public abstract class Animal {
+import com.company.model.ICSVRead;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Amphibian.class, name = "amphibian"),
+        @JsonSubTypes.Type(value = Bird.class, name = "bird"),
+        @JsonSubTypes.Type(value = Invertebrate.class, name = "invertebrate")
+})
+
+
+public abstract class Animal implements ICSVRead {
     private String name;
     private String scientificName;
 

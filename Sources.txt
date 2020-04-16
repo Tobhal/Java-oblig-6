@@ -14,7 +14,7 @@
 | Kilder til programering |
 ***************************
 - https://stackoverflow.com/questions/14926148/java-enum-usage-getting-and-setting
--https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line
+- https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line
 
 - https://www.geeksforgeeks.org/localdate-format-method-in-java/
 
@@ -26,6 +26,16 @@
 - https://stackoverflow.com/questions/2817695/how-does-java-order-items-in-a-hashmap-or-a-hashtable     -> for å finne ut hvorfor hashMapet var "sortert tilfeldig"
 
 - https://stackoverflow.com/questions/3395286/remove-last-character-of-a-stringbuilder
+
+- https://stackoverflow.com/questions/7056959/convert-string-to-equivalent-enum-value
+
+JSON (lesing/skriving)
+- https://github.com/larseknu/programmering2_2020/blob/master/Forelesning17_Uke11_JSON_Collections/AfterLecture/01_FilSkriving_JSON/src/main/java/no/hiof/larseknu/json/model/Klasse.java
+- https://stackoverflow.com/questions/20837856/can-not-deserialize-instance-of-java-util-arraylist-out-of-start-object-token
+- https://stackoverflow.com/questions/35583425/java-cannot-resolve-symbol-of-in-localdate-of
+- https://github.com/FasterXML/jackson-modules-java8/issues/11
+- https://fasterxml.github.io/jackson-databind/javadoc/2.6/com/fasterxml/jackson/databind/SerializationFeature.html
+- https://codeboje.de/jackson-java-8-datetime-handling/
 
 Random things
 - https://www.rangen.co.uk/world/planetgen.php

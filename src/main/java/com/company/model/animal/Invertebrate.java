@@ -20,6 +20,23 @@ public class Invertebrate extends Animal {
         this.legs = legs;
     }
 
+    public void setProp(String prop, String value) {
+        switch (prop.toLowerCase()) {
+            case "name":
+            case "animal_name":
+                setName(value);
+                break;
+            case "sientificName":
+            case "animal_sientificName":
+                setScientificName(value);
+                break;
+            case "mod":
+            case "animal_mod":
+                setLegs(Integer.parseInt(value));
+                break;
+        }
+    }
+
     @Override
     public String toString() {
         return getScientificName() + " (" + getName() + ") and have " + legs + " legs";

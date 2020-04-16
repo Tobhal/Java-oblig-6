@@ -1,10 +1,12 @@
 package com.company.model;
 
 import com.company.model.planetSystem.Planet;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class Location {
+public class Location implements ICSVRead{
     private double longitude, latitude;
     private ArrayList<Biome> biomes = new ArrayList<>();
     private Planet planet;
@@ -22,6 +24,8 @@ public class Location {
         this.biomes = biomes;
         this.planet = planet;
     }
+
+
 
     public enum Biome {
         FOREST,
@@ -45,6 +49,7 @@ public class Location {
     public Planet getPlanet() {
         return planet;
     }
+    @JsonIgnore
     public String getBiomesCSV() {
         StringBuilder bString = new StringBuilder();
         String prefix = "";
@@ -85,5 +90,26 @@ public class Location {
 
     public static String toCSVFormat() {
         return "Location_longitude,Location_latitude,Location_biomes," + new Planet().toCSVFormat();
+    }
+
+    @Override
+    public void setProp(String prop, String value) {
+        switch (prop.toLowerCase()) {
+            case "longitude":
+            case "location_longitude":
+                setLongitude(Double.parseDouble(value));
+                break;
+            case "latitude":
+            case "location_latitude":
+                setLatitude(Double.parseDouble(value));
+                break;
+            case "biomes":
+            case "location_biomes":
+                String[] tmp = value.split(";");
+                for (String string : tmp) {
+                    addBiome(Biome.valueOf(string.toUpperCase()));
+                }
+                break;
+        }
     }
 }

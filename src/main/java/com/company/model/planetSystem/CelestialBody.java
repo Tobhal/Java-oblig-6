@@ -1,5 +1,6 @@
 package com.company.model.planetSystem;
 
+import com.company.model.ICSVRead;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -11,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = Star.class, name = "star")
 })
 
-public abstract class CelestialBody {
+public abstract class CelestialBody implements ICSVRead {
     private String name, pictureUrl;
     private double radius, mass;
 

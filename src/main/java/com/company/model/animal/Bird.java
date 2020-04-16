@@ -20,6 +20,23 @@ public class Bird extends Animal {
         this.canFly = canFly;
     }
 
+    public void setProp(String prop, String value) {
+        switch (prop.toLowerCase()) {
+            case "name":
+            case "animal_name":
+                setName(value);
+                break;
+            case "sientificName":
+            case "animal_sientificName":
+                setScientificName(value);
+                break;
+            case "mod":
+            case "animal_mod":
+                setCanFly(Boolean.parseBoolean(value));
+                break;
+        }
+    }
+
     @Override
     public String toString() {
         return getScientificName() + " (" + getName() + ") " + (canFly ? "can fly" : "can't fly");

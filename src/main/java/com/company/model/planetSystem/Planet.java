@@ -63,4 +63,41 @@ public class Planet extends NaturalSatellite {
     public static String toCSVFormat() {
         return "Planet_name,Planet_radius,Planet_mass,Planet_semiMajorAxis,Planet_eccentricity,Planet_orbitalPeriod," + new Star().toCSVFormat();
     }
+
+    @Override
+    public void setProp(String prop, String value) {
+        switch (prop.toLowerCase()) {
+            case "name":
+            case "planet_name":
+                setName(value);
+                break;
+            case "radius":
+            case "planet_radius":
+                setRadius(Double.parseDouble(value));
+                break;
+            case "mass":
+            case "planet_mass":
+                setMass(Double.parseDouble(value));
+                break;
+            case "semimajoraxis":
+            case "planet_semimajoraxis":
+                setSemiMajorAxis(Double.parseDouble(value));
+                break;
+            case "eccentricity":
+            case "planet_eccentricity":
+                setEccentricity(Double.parseDouble(value));
+                break;
+            case "orbitalperiod":
+            case "planet_orbitalperiod":
+                setOrbitalPeriod(Double.parseDouble(value));
+                break;
+            case "pichureUrl":
+            case "planet_pichureUrl":
+                setPictureUrl(value);
+                break;
+            case "star":
+            case "planet_star":
+                break;
+        }
+    }
 }
