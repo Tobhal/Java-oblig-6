@@ -11,3 +11,5 @@ src/main/java/com/company/model/.DS_Store
 Oblig-6.iml# Java-oblig-6
 build/
 .gradle/
+CSV/*
+JSON/*
