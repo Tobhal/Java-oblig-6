@@ -1,8 +1,8 @@
 package com.company.model;
 
 import com.company.model.animal.*;
-import org.jetbrains.annotations.NotNull;
 
+import javax.naming.Name;
 import java.time.LocalDate;
 
 public class Observation {
@@ -15,10 +15,9 @@ public class Observation {
 
     public Observation(){
     }
-    public Observation(int quantity, String name, String image, String comment, Animal animal, Location location, LocalDate date) {
+    public Observation(int quantity, String name, Animal animal, Location location, LocalDate date, String image, String comment) {
         this.id = idAll;
         idAll++;
-        System.out.println(idAll + " - " + id);
         this.quantity = quantity;
         this.name = name;
         this.image = image;
@@ -86,5 +85,16 @@ public class Observation {
                 location + "\n" +
                 "on the animal: " + animal.getName() + "\n" +
                 "Comment:\n" + comment + "\n\n";
+    }
+
+    public String toCSV() {
+        return id + "," + name + "," + quantity + "," +
+                animal.toCSV() + "," + animal.getClass().getSimpleName() + "," +
+                location.toCSV() + "," + date + "," +
+                image + "," + getLocation().getPlanet().getPictureUrl() + "," + getLocation().getPlanet().getStar().getPictureUrl() + "," + comment;
+    }
+
+    public static String toCSVFormat() {
+        return "ID,Name,Quantity," + new Bird().toCSVFormat() + new Location().toCSVFormat() + "Date,Image,Planet_Image,Planet_Star_image,Comment";
     }
 }

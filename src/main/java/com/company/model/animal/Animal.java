@@ -26,4 +26,12 @@ public abstract class Animal {
     public void setScientificName(String scientificName) {
         this.scientificName = scientificName;
     }
+
+    public String toCSV() {
+        return name + "," + scientificName + "";
+    }
+
+    public static String toCSVFormat() {
+        return "Animal_name,Animal_scientificName,Animal_mod,Animal_type,";
+    }
 }

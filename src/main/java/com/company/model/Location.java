@@ -2,6 +2,7 @@ package com.company.model;
 
 import com.company.model.planetSystem.Planet;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Location {
     private double longitude, latitude;
@@ -44,6 +45,16 @@ public class Location {
     public Planet getPlanet() {
         return planet;
     }
+    public String getBiomesCSV() {
+        StringBuilder bString = new StringBuilder();
+        String prefix = "";
+        for (Biome biome : biomes) {
+            bString.append(prefix + biome);
+            prefix = ";";
+        }
+
+        return bString.toString();
+    }
 
     // Set
     public void setLongitude(double longitude) {
@@ -66,5 +77,13 @@ public class Location {
     @Override
     public String toString() {
         return planet.getName() + " (" + latitude + ", " + longitude + ") inside the biomes:" + biomes;
+    }
+
+    public String toCSV() {
+        return longitude + "," + latitude + "," + getBiomesCSV() + "," + getPlanet().toCSV();
+    }
+
+    public static String toCSVFormat() {
+        return "Location_longitude,Location_latitude,Location_biomes," + new Planet().toCSVFormat();
     }
 }

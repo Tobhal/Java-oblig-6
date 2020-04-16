@@ -1,17 +1,22 @@
 package com.company;
 
+import com.company.model.FileRW;
 import com.company.model.Location;
 import com.company.model.Observation;
 import com.company.model.animal.*;
 import com.company.model.planetSystem.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         HashMap<String, Observation> observations = new HashMap<>();
 
 
@@ -56,26 +61,26 @@ public class Main {
 
 
         //Observation generation
-        Observation bufoBufoObservation = new Observation(100, "Bufo bufo observation", "", "They look like Toads.", springToad, new Location(-13.55729, 4.74894,
-                new ArrayList<Location.Biome>() {{add(Location.Biome.FRESHWATER); add(Location.Biome.GRASSLAND); add(Location.Biome.FOREST);}}, hian), LocalDate.parse("2339-04-01"));
+        Observation bufoBufoObservation = new Observation(100, "Bufo bufo observation", springToad, new Location(-13.55729, 4.74894,
+                new ArrayList<Location.Biome>() {{add(Location.Biome.FRESHWATER); add(Location.Biome.GRASSLAND); add(Location.Biome.FOREST);}}, hian), LocalDate.parse("2339-04-01"), "", "They look like Toads.");
 
-        Observation okapiObservation = new Observation(5, "Abalistes sarsii observation", "", "They look like a weird reptilian.", okapi, new Location(24.96709, 61.64084,
-                new ArrayList<Location.Biome>() {{add(Location.Biome.DESERT);}}, hian), LocalDate.parse("2340-11-07"));
+        Observation okapiObservation = new Observation(5, "Abalistes sarsii observation", okapi, new Location(24.96709, 61.64084,
+                new ArrayList<Location.Biome>() {{add(Location.Biome.DESERT);}}, hian), LocalDate.parse("2340-11-07"), "", "They look like a weird reptilian.");
 
-        Observation eelObservation = new Observation(80, "Norops tessellata observation", "", "Not sure what i am looking at", eel, new Location(11.37629, 45.09165,
-                new ArrayList<Location.Biome>() {{add(Location.Biome.TUNDRA); add(Location.Biome.FOREST);}}, ichohasu), LocalDate.parse("2339-05-03"));
+        Observation eelObservation = new Observation(80, "Norops tessellata observation", eel, new Location(11.37629, 45.09165,
+                new ArrayList<Location.Biome>() {{add(Location.Biome.TUNDRA); add(Location.Biome.FOREST);}}, ichohasu), LocalDate.parse("2339-05-03"), "", "Not sure what i am looking at");
 
-        Observation doveObservation = new Observation(26, "Aves observation", "", "I think someone have taken with them 26 doves from Earth", dove, new Location( -50.25423, 139.12402,
-                new ArrayList<Location.Biome>() {{add(Location.Biome.GRASSLAND);}}, ichohasu), LocalDate.parse("2340-09-10"));
+        Observation doveObservation = new Observation(26, "Aves observation", dove, new Location( -50.25423, 139.12402,
+                new ArrayList<Location.Biome>() {{add(Location.Biome.GRASSLAND);}}, ichohasu), LocalDate.parse("2340-09-10"), "", "I think someone have taken with them 26 doves from Earth");
 
-        Observation urusObservation = new Observation(229, "Cephaloscyllium sculptus observation", "", "They look like normal birds, but i have only seen them from 500m", urus, new Location( 79.16069, 91.23182,
-                new ArrayList<Location.Biome>() {{add(Location.Biome.GRASSLAND);}}, hund), LocalDate.parse("2339-05-03"));
+        Observation urusObservation = new Observation(229, "Cephaloscyllium sculptus observation", urus, new Location( 79.16069, 91.23182,
+                new ArrayList<Location.Biome>() {{add(Location.Biome.GRASSLAND);}}, hund), LocalDate.parse("2339-05-03"), "", "They look like normal birds. Only problem is that i have just seen then for 500m");
 
-        Observation langustObservation = new Observation(85, "Palinurus elephas observation", "", "They have some figure on the back that kan look like a elephant", langust, new Location( -50.22222, -55.90941,
-                new ArrayList<Location.Biome>() {{add(Location.Biome.MARINE); add(Location.Biome.FRESHWATER); add(Location.Biome.GRASSLAND); add(Location.Biome.FOREST);}}, whuthadusky), LocalDate.parse("2340-09-10"));
+        Observation langustObservation = new Observation(85, "Palinurus elephas observation", langust, new Location( -50.22222, -55.90941,
+                new ArrayList<Location.Biome>() {{add(Location.Biome.MARINE); add(Location.Biome.FRESHWATER); add(Location.Biome.GRASSLAND); add(Location.Biome.FOREST);}}, whuthadusky), LocalDate.parse("2340-09-10"), "", "They have some figure on the back that kan look like a elephant");
 
-        Observation eidolonhelvumObservation = new Observation(3000, "Astropecten jamaicensis observation", "", "It is hard to say how many i have found, they are all over the place", eidolonhelvum, new Location( -26.00161,  -60.65475,
-                new ArrayList<Location.Biome>() {{add(Location.Biome.GRASSLAND); add(Location.Biome.FOREST); add(Location.Biome.DESERT); add(Location.Biome.TUNDRA); add(Location.Biome.FRESHWATER);}}, whuthadusky), LocalDate.parse("2338-01-13"));
+        Observation eidolonhelvumObservation = new Observation(3000, "Astropecten jamaicensis observation", eidolonhelvum, new Location( -26.00161,  -60.65475,
+                new ArrayList<Location.Biome>() {{add(Location.Biome.GRASSLAND); add(Location.Biome.FOREST); add(Location.Biome.DESERT); add(Location.Biome.TUNDRA); add(Location.Biome.FRESHWATER);}}, whuthadusky), LocalDate.parse("2338-01-13"), "", "It is hard to say how many i have found. I can se the all over the place");
 
 
         observations.put(springToad.getScientificName(), bufoBufoObservation);
@@ -88,6 +93,13 @@ public class Main {
 
         System.out.println(observations);
 
+
+        //Saving to file:
+        FileRW.write("CSV/Observation", observations, FileRW.FileTypes.CSV);
+        FileRW.write("JSON/Observation", observations, FileRW.FileTypes.JSON);
+
+        // System.out.println("---------------");
+        // System.out.println(dove.getClass().getSimpleName());
 
         /*
         System.out.println("--------------------");

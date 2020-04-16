@@ -17,15 +17,6 @@ public abstract class NaturalSatellite extends CelestialBody implements Comparab
         this.eccentricity = eccentricity;
         this.orbitalPeriod = orbitalPeriod;
     }
-    public NaturalSatellite(String name, String pictureUrl, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centrealCelestialBody) {
-        super(name, pictureUrl, radius, mass);
-        this.semiMajorAxis = semiMajorAxis;
-        this.eccentricity = eccentricity;
-        this.orbitalPeriod = orbitalPeriod;
-        this.centrealCelestialBody = centrealCelestialBody;
-    }
-
-
 
     // Get
     public double getSemiMajorAxis() {
@@ -37,9 +28,6 @@ public abstract class NaturalSatellite extends CelestialBody implements Comparab
     public double getEccentricity() {
         return eccentricity;
     }
-    public CelestialBody getCentrealCelestialBody() {
-        return centrealCelestialBody;
-    }
 
     // Set
     public void setOrbitalPeriod(double orbitalPeriod) {
@@ -50,9 +38,6 @@ public abstract class NaturalSatellite extends CelestialBody implements Comparab
     }
     public void setSemiMajorAxis(double semiMajorAxis) {
         this.semiMajorAxis = semiMajorAxis;
-    }
-    public void setCentrealCelestialBody(CelestialBody centrealCelestialBody) {
-        this.centrealCelestialBody = centrealCelestialBody;
     }
 
     @Override

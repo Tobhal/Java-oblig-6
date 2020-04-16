@@ -30,4 +30,9 @@ public class Amphibian extends Animal {
     public String toString() {
         return getScientificName() + " (" + getName() + ") is part of the group " + group;
     }
+
+    @Override
+    public String toCSV() {
+        return getName() + "," + getScientificName() + "," + getGroup() + "";
+    }
 }

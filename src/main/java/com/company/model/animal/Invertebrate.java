@@ -24,4 +24,9 @@ public class Invertebrate extends Animal {
     public String toString() {
         return getScientificName() + " (" + getName() + ") and have " + legs + " legs";
     }
+
+    @Override
+    public String toCSV() {
+        return getName() + "," + getScientificName() + "," + getLegs() + "";
+    }
 }

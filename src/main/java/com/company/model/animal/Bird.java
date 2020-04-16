@@ -24,4 +24,9 @@ public class Bird extends Animal {
     public String toString() {
         return getScientificName() + " (" + getName() + ") " + (canFly ? "can fly" : "can't fly");
     }
+
+    @Override
+    public String toCSV() {
+        return getName() + "," + getScientificName() + "," + canFly + "";
+    }
 }

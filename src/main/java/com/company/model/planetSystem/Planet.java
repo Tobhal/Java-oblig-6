@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Planet extends NaturalSatellite {
     private ArrayList<Moon> moons = new ArrayList<>();
+    private Star star;
 
     public Planet(){
     }
@@ -15,11 +16,13 @@ public class Planet extends NaturalSatellite {
     public Planet(String name, String pictureUrl, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod) {
         super(name, pictureUrl, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod);
     }
-    public Planet(String name, String pictureUrl, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centrealCelestialBody) {
-        super(name, pictureUrl, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, centrealCelestialBody);
+    public Planet(String name, String pictureUrl, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, Star star) {
+        super(name, pictureUrl, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod);
+        this.star = star;
     }
-    public Planet(String name, String pictureUrl, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, CelestialBody centrealCelestialBody, ArrayList<Moon> moons) {
-        super(name, pictureUrl, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, centrealCelestialBody);
+    public Planet(String name, String pictureUrl, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, Star star, ArrayList<Moon> moons) {
+        super(name, pictureUrl, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod);
+        this.star = star;
         this.moons = moons;
     }
 
@@ -27,10 +30,16 @@ public class Planet extends NaturalSatellite {
     public ArrayList<Moon> getMoons() {
         return moons;
     }
+    public Star getStar() {
+        return star;
+    }
 
     // Set
     public void setMoons(ArrayList<Moon> moons) {
         this.moons = moons;
+    }
+    public void setStar(Star star) {
+        this.star = star;
     }
 
     public void addMoon(Moon moon) {
@@ -43,8 +52,15 @@ public class Planet extends NaturalSatellite {
     @Override
     public String toString() {
         return getName() + " has mass " + getMass() + ", radius " + getRadius() + ", semi major axis " + getSemiMajorAxis() + ", eccentricity " + getEccentricity() + " and orbital period " + getOrbitalPeriod() + ".\n\t\t" +
-                "It spins around " + getCentrealCelestialBody().getName() + "\n\t\t" +
+                "It spins around " + star.getName() + "\n\t\t" +
                 (moons != null ? "and had the moons: " + moons : "");
     }
 
+    public String toCSV() {
+        return getName() + "," + getRadius() + "," + getMass() + "," + getSemiMajorAxis() + "," + getEccentricity() + "," + getOrbitalPeriod() + "," + star.toCSV();
+    }
+
+    public static String toCSVFormat() {
+        return "Planet_name,Planet_radius,Planet_mass,Planet_semiMajorAxis,Planet_eccentricity,Planet_orbitalPeriod," + new Star().toCSVFormat();
+    }
 }

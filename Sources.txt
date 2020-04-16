@@ -25,6 +25,7 @@
 
 - https://stackoverflow.com/questions/2817695/how-does-java-order-items-in-a-hashmap-or-a-hashtable     -> for å finne ut hvorfor hashMapet var "sortert tilfeldig"
 
+- https://stackoverflow.com/questions/3395286/remove-last-character-of-a-stringbuilder
 
 Random things
 - https://www.rangen.co.uk/world/planetgen.php
