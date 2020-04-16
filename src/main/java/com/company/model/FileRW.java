@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class FileRW {
         JSON
     }
 
-    public static void read(String filePath, Map<String, Observation> observationMap, FileTypes fileType) throws IOException {
+    public static void read(String filePath, Map<String, Observation> observationMap, FileTypes fileType) {
         File file;
         ArrayList<Observation> observations = new ArrayList<>();
         switch (fileType) {
@@ -98,6 +99,8 @@ public class FileRW {
 
                         observationMap.put(animal.getScientificName(), observation);
                     }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
 
                 break;
@@ -108,7 +111,11 @@ public class FileRW {
                 ObjectMapper mapper = new ObjectMapper();
                 Observation[] observations1 = new Observation[0];
 
-                observations1 = mapper.readValue(file, Observation[].class);
+                try {
+                    observations1 = mapper.readValue(file, Observation[].class);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 observations.addAll(Arrays.asList(observations1));
 
