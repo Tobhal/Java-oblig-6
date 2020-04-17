@@ -7,6 +7,7 @@ import com.company.model.animal.Animal;
 import com.company.model.planetSystem.Planet;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class ObservationRepositoryJSON implements IObservationRepository {
@@ -22,7 +23,11 @@ public class ObservationRepositoryJSON implements IObservationRepository {
      */
     @Override
     public ArrayList<Observation> getAllObservations() {
-        return new ArrayList<>(observations.values());
+        ArrayList<Observation> observationArrayList = new ArrayList<>(observations.values());
+        observationArrayList.sort((Observation observation1, Observation observation2) -> observation1.getId() - observation2.getId());
+        //observationArrayList.sort(Comparator.comparingInt(Observation::getId));
+
+        return observationArrayList;
     }
 
     @Override

@@ -3,11 +3,10 @@
         <h1>Observations</h1>
         <ul class="observations-overview-list">
             <li v-for="observation in observations">
-                <a :href="`/observations/${observations.name.trim()}`" class="link-to-observation-details">
+                <a :href="`/observations/${observation.name.trim()}`" class="link-to-observation-details">
                     <div class="single-observation-container" >
-                        <h1>{{observation.id}} - {{observation.name}}</h1>
-                        <h1>{{observation.animal.name}}</h1>
-                        <h1>{{observation.size()}}</h1>
+                        <h2>{{observation.id}} - {{observation.name}}</h2>
+                        <h3>Animal: {{observation.animal.name}}</h3>
                     </div>
                 </a>
             </li>
@@ -57,8 +56,8 @@
     div.single-observation-container{
         overflow: hidden;
         width: 500px;
-        background-color: #000000;
-        margin: 0 auto;
+        background-color: #101010;
+        margin: 5px auto;
         opacity: 0.96;
         text-align: center;
     }

@@ -22,7 +22,11 @@ public class ObservationRepositoryCSV implements IObservationRepository {
      */
     @Override
     public ArrayList<Observation> getAllObservations() {
-        return new ArrayList<>(observations.values());
+        ArrayList<Observation> observationArrayList = new ArrayList<>(observations.values());
+        observationArrayList.sort((Observation observation1, Observation observation2) -> observation1.getId() - observation2.getId());
+        //observationArrayList.sort(Comparator.comparingInt(Observation::getId));
+
+        return observationArrayList;
     }
 
     @Override
