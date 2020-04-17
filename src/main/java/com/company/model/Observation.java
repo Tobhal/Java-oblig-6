@@ -16,10 +16,16 @@ public class Observation implements ICSVRead{
     private Location location;
 
     public Observation(){
+        idAll++;
+        this.id = idAll;
+    }
+    public Observation(String name, Location location) {
+        this.name = name;
+        this.location = location;
     }
     public Observation(int quantity, String name, Animal animal, Location location, LocalDate date, String image, String comment) {
-        this.id = idAll;
         idAll++;
+        this.id = idAll;
         this.quantity = quantity;
         this.name = name;
         this.image = image;
@@ -29,7 +35,7 @@ public class Observation implements ICSVRead{
         this.date = date;
     }
 
-    // Get
+    //Get
     public int getId() {
         return id;
     }
@@ -55,7 +61,7 @@ public class Observation implements ICSVRead{
         return date;
     }
 
-    // Sett
+    //Sett
     public void setId(int id) {
         this.id = id;
     }
@@ -83,14 +89,29 @@ public class Observation implements ICSVRead{
 
     //Update
     public void update(Observation newObservation) {
-        setId(newObservation.getId());
-        setQuantity(newObservation.getQuantity());
-        setName(newObservation.getName());
-        setImage(newObservation.getImage());
-        setComment(newObservation.getComment());
-        setAnimal(newObservation.getAnimal());
-        setLocation(newObservation.getLocation());
-        setDate(newObservation.getDate());
+        if (newObservation.getId() != 0)
+            setId(newObservation.getId());
+
+        if (newObservation.getQuantity() != 0)
+            setQuantity(newObservation.getQuantity());
+
+        if (newObservation.getName() != null)
+            setName(newObservation.getName());
+
+        if (newObservation.getImage() != null)
+            setImage(newObservation.getImage());
+
+        if (newObservation.getComment() != null)
+            setComment(newObservation.getComment());
+
+        if (newObservation.getAnimal() != null)
+            setAnimal(newObservation.getAnimal());
+
+        if (newObservation.getLocation() != null)
+            setLocation(newObservation.getLocation());
+
+        if (newObservation.getDate() != null)
+            setDate(newObservation.getDate());
     }
 
 

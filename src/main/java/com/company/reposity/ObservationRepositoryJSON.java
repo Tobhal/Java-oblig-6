@@ -26,6 +26,11 @@ public class ObservationRepositoryJSON implements IObservationRepository {
     }
 
     @Override
+    public HashMap<String, Observation> getAllObservationHash() {
+        return observations;
+    }
+
+    @Override
     public ArrayList<Location> getAllLocations() {
         ArrayList<Location> locationArrayList = new ArrayList<>();
 
@@ -88,6 +93,11 @@ public class ObservationRepositoryJSON implements IObservationRepository {
         return location.getPlanet();
     }
 
+    @Override
+    public void readFile(String fileName, HashMap<String, Observation> observationHashMap, FileRW.FileTypes fileType) {
+        FileRW.read(fileName, observationHashMap, fileType);
+    }
+
     /*
     Create
      */
@@ -116,7 +126,7 @@ public class ObservationRepositoryJSON implements IObservationRepository {
      */
     @Override
     public void updateObservation(Observation observation, Observation newObservation) {
-        observation.update(observation);
+        observation.update(newObservation);
     }
 
     @Override
@@ -140,30 +150,6 @@ public class ObservationRepositoryJSON implements IObservationRepository {
     @Override
     public void deleteObservation(Observation observation) {
         observations.remove(observation.getAnimal().getScientificName());
-    }
-
-    @Override
-    public void deleteLocation(Location location) {
-        for (Observation observation : observations.values()) {
-            if (observation.getLocation() == location)
-                observation.setLocation(null);
-        }
-    }
-
-    @Override
-    public void deleteAnimal(Animal animal) {
-        for (Observation observation : observations.values()) {
-            if (observation.getAnimal() == animal)
-                observation.setAnimal(null);
-        }
-    }
-
-    @Override
-    public void deletePlanet(Planet planet) {
-        for (Observation observation : observations.values()) {
-            if (observation.getLocation().getPlanet() == planet)
-                observation.getLocation().setPlanet(null);
-        }
     }
 
     //Save

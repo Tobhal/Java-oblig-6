@@ -9,11 +9,13 @@ import com.company.model.planetSystem.Planet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface IObservationRepository {
 
     //Read
     ArrayList<Observation> getAllObservations();
+    HashMap<String, Observation> getAllObservationHash();
     ArrayList<Location> getAllLocations();
     ArrayList<Animal> getAllAnimals();
     ArrayList<Planet> getAllPlanets();
@@ -24,6 +26,8 @@ public interface IObservationRepository {
     Planet getPlanet(String name);
     Planet getPlanet(Observation observation);
     Planet getPlanet(Location location);
+
+    void readFile(String fileName, HashMap<String, Observation> observationHashMap, FileRW.FileTypes fileType);
 
     //Create
     void createObservation(Observation observation);
@@ -39,9 +43,6 @@ public interface IObservationRepository {
 
     //Delete
     void deleteObservation(Observation observation);
-    void deleteLocation(Location location);
-    void deleteAnimal(Animal animal);
-    void deletePlanet(Planet planet);
 
     void saveRepository(FileRW.FileTypes fileType);
 

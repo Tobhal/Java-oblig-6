@@ -1,12 +1,13 @@
 <template id="observations-overview">
     <div>
-        <h1>Planet systems</h1>
+        <h1>Observations</h1>
         <ul class="observations-overview-list">
             <li v-for="observation in observations">
-                <a :href="`/observations/${observation.name.trim()}`" class="link-to-observation-details">
+                <a :href="`/observations/${observations.name.trim()}`" class="link-to-observation-details">
                     <div class="single-observation-container" >
                         <h1>{{observation.id}} - {{observation.name}}</h1>
                         <h1>{{observation.animal.name}}</h1>
+                        <h1>{{observation.size()}}</h1>
                     </div>
                 </a>
             </li>
