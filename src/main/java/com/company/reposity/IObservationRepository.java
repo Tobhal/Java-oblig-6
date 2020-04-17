@@ -1,10 +1,13 @@
 package com.company.reposity;
 
+import com.company.model.FileRW;
 import com.company.model.Location;
 import com.company.model.Observation;
 import com.company.model.animal.Animal;
 import com.company.model.planetSystem.Planet;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface IObservationRepository {
@@ -15,14 +18,8 @@ public interface IObservationRepository {
     ArrayList<Animal> getAllAnimals();
     ArrayList<Planet> getAllPlanets();
 
-
     Observation getObservation(String name);
     Observation getObservation(int id);
-
-    Location getLocation(Observation observation);
-
-    Animal getAnimal(Observation observation);
-    Animal getAnimal(Location location);
 
     Planet getPlanet(String name);
     Planet getPlanet(Observation observation);
@@ -30,30 +27,23 @@ public interface IObservationRepository {
 
     //Create
     void createObservation(Observation observation);
-
-    void createLocation(Location location);
-
-    void createAnimal(Animal animal);
-
-    void createPlanet(Planet planet);
+    void createLocation(Observation observation, Location location);
+    void createAnimal(Observation observation, Animal animal);
+    void createPlanet(Location location, Planet planet);
 
     //Update
-    void updateObservation(Observation observation);
-
-    void updateLocation(Location location);
-
-    void updateAnimal(Animal animal);
-
-    void updatePlanet(Planet planet);
+    void updateObservation(Observation observation, Observation newObservation);
+    void updateLocation(Location location, Location newLocation);
+    void updateAnimal(Animal animal, Animal newAnimal);
+    void updatePlanet(Planet planet, Planet newPlanet);
 
     //Delete
     void deleteObservation(Observation observation);
-
     void deleteLocation(Location location);
-
     void deleteAnimal(Animal animal);
-
     void deletePlanet(Planet planet);
+
+    void saveRepository(FileRW.FileTypes fileType);
 
 }
 

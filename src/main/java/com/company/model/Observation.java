@@ -10,13 +10,14 @@ import java.util.List;
 public class Observation implements ICSVRead{
     private static int idAll;
     private int id, quantity;
-    private String name, image, comment, date;
+    private String name, image, comment;
     private Animal animal;
+    private LocalDate date;
     private Location location;
 
     public Observation(){
     }
-    public Observation(int quantity, String name, Animal animal, Location location, String date, String image, String comment) {
+    public Observation(int quantity, String name, Animal animal, Location location, LocalDate date, String image, String comment) {
         this.id = idAll;
         idAll++;
         this.quantity = quantity;
@@ -50,7 +51,7 @@ public class Observation implements ICSVRead{
     public Location getLocation() {
         return location;
     }
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -76,10 +77,21 @@ public class Observation implements ICSVRead{
     public void setLocation(Location location) {
         this.location = location;
     }
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
+    //Update
+    public void update(Observation newObservation) {
+        setId(newObservation.getId());
+        setQuantity(newObservation.getQuantity());
+        setName(newObservation.getName());
+        setImage(newObservation.getImage());
+        setComment(newObservation.getComment());
+        setAnimal(newObservation.getAnimal());
+        setLocation(newObservation.getLocation());
+        setDate(newObservation.getDate());
+    }
 
 
     @Override
@@ -114,7 +126,7 @@ public class Observation implements ICSVRead{
                 setQuantity(Integer.parseInt(value));
                 break;
             case "date":
-                setDate(value);
+                setDate(LocalDate.parse(value));
                 break;
             case "image":
                 setImage(value);

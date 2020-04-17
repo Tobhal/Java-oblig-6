@@ -26,7 +26,7 @@ public class Planet extends NaturalSatellite {
         this.moons = moons;
     }
 
-    // Get
+    //Get
     public ArrayList<Moon> getMoons() {
         return moons;
     }
@@ -34,7 +34,7 @@ public class Planet extends NaturalSatellite {
         return star;
     }
 
-    // Set
+    //Set
     public void setMoons(ArrayList<Moon> moons) {
         this.moons = moons;
     }
@@ -47,6 +47,13 @@ public class Planet extends NaturalSatellite {
     }
     public void addMoons(ArrayList<Moon> moonArrayList) {
         this.moons.addAll(moonArrayList);
+    }
+
+    //Update
+    public void update(Planet newPlanet) {
+        super.update(newPlanet);
+        setMoons(newPlanet.getMoons());
+        setStar(newPlanet.getStar());
     }
 
     @Override

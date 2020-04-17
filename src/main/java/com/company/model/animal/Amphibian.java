@@ -16,14 +16,20 @@ public class Amphibian extends Animal {
         MAMMALIA
     }
 
-    // Get
+    //Get
     public Groups getGroup() {
         return group;
     }
 
-    // Set
+    //Set
     public void setGroup(Groups group) {
         this.group = group;
+    }
+
+    //Update
+    public void update(Amphibian newAmphibian) {
+        super.update(newAmphibian);
+        setGroup(newAmphibian.getGroup());
     }
 
     public void setProp(String prop, String value) {
@@ -32,8 +38,8 @@ public class Amphibian extends Animal {
             case "animal_name":
                 setName(value);
                 break;
-            case "sientificName":
-            case "animal_sientificName":
+            case "scientificname":
+            case "animal_scientificname":
                 setScientificName(value);
                 break;
             case "mod":

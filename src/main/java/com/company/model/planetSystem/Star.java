@@ -11,14 +11,20 @@ public class Star extends CelestialBody {
         this.effectiveTemperature = effectiveTemperature;
     }
 
-    // Get
+    //Get
     public double getEffectiveTemperature() {
         return effectiveTemperature;
     }
 
-    // Set
+    //Set
     public void setEffectiveTemperature(double effectiveTemperature) {
         this.effectiveTemperature = effectiveTemperature;
+    }
+
+    //Update
+    public void update(Star newStar) {
+        super.update(newStar);
+        setEffectiveTemperature(newStar.getEffectiveTemperature());
     }
 
     @Override

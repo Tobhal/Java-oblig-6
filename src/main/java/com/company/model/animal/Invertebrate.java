@@ -10,14 +10,20 @@ public class Invertebrate extends Animal {
         this.legs = legs;
     }
 
-    // Get
+    //Get
     public int getLegs() {
         return legs;
     }
 
-    // Set
+    //Set
     public void setLegs(int legs) {
         this.legs = legs;
+    }
+
+    //Update
+    public void update(Invertebrate newInvertebrate) {
+        super.update(newInvertebrate);
+        setLegs(newInvertebrate.getLegs());
     }
 
     public void setProp(String prop, String value) {
@@ -26,8 +32,8 @@ public class Invertebrate extends Animal {
             case "animal_name":
                 setName(value);
                 break;
-            case "sientificName":
-            case "animal_sientificName":
+            case "scientificname":
+            case "animal_scientificname":
                 setScientificName(value);
                 break;
             case "mod":

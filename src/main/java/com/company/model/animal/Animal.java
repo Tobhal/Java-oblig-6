@@ -26,7 +26,7 @@ public abstract class Animal implements ICSVRead {
         this.scientificName = scientificName;
     }
 
-    // Get
+    //Get
     public String getName() {
         return name;
     }
@@ -34,12 +34,18 @@ public abstract class Animal implements ICSVRead {
         return scientificName;
     }
 
-    // Set
+    //Set
     public void setName(String name) {
         this.name = name;
     }
     public void setScientificName(String scientificName) {
         this.scientificName = scientificName;
+    }
+
+    //Update
+    public void update(Animal newAnimal) {
+        setName(newAnimal.getName());
+        setScientificName(newAnimal.getScientificName());
     }
 
     public String toCSV() {

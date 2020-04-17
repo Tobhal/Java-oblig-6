@@ -10,14 +10,20 @@ public class Bird extends Animal {
         this.canFly = canFly;
     }
 
-    // Get
-    public boolean CanFly() {
+    //Get
+    public boolean canFly() {
         return canFly;
     }
 
-    // Set
+    //Set
     public void setCanFly(boolean canFly) {
         this.canFly = canFly;
+    }
+
+    //Update
+    public void update(Bird newBird) {
+        super.update(newBird);
+        setCanFly(newBird.canFly());
     }
 
     public void setProp(String prop, String value) {
@@ -26,8 +32,8 @@ public class Bird extends Animal {
             case "animal_name":
                 setName(value);
                 break;
-            case "sientificName":
-            case "animal_sientificName":
+            case "scientificname":
+            case "animal_scientificname":
                 setScientificName(value);
                 break;
             case "mod":

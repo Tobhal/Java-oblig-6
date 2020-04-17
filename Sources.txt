@@ -36,6 +36,8 @@ JSON (lesing/skriving)
 - https://github.com/FasterXML/jackson-modules-java8/issues/11
 - https://fasterxml.github.io/jackson-databind/javadoc/2.6/com/fasterxml/jackson/databind/SerializationFeature.html
 - https://codeboje.de/jackson-java-8-datetime-handling/
+- https://fasterxml.github.io/jackson-modules-java8/javadoc/datetime/2.9/com/fasterxml/jackson/datatype/jsr310/JavaTimeModule.html
+- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.10.3
 
 Random things
 - https://www.rangen.co.uk/world/planetgen.php

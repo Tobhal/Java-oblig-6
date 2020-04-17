@@ -36,7 +36,7 @@ public class Location implements ICSVRead{
         TUNDRA
     }
 
-    // Get
+    //Get
     public double getLongitude() {
         return longitude;
     }
@@ -61,7 +61,7 @@ public class Location implements ICSVRead{
         return bString.toString();
     }
 
-    // Set
+    //Set
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
@@ -77,6 +77,14 @@ public class Location implements ICSVRead{
 
     public void addBiome(Biome biome){
         biomes.add(biome);
+    }
+
+    //Update
+    public void update(Location newLocation) {
+        setLongitude(newLocation.getLongitude());
+        setLatitude(newLocation.getLatitude());
+        setPlanet(newLocation.getPlanet());
+        setBiomes(newLocation.getBiomes());
     }
 
     @Override

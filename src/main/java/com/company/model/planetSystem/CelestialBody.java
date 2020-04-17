@@ -28,7 +28,7 @@ public abstract class CelestialBody implements ICSVRead {
         this.mass = mass;
     }
 
-    // Get
+    //Get
     public String getName() {
         return name;
     }
@@ -42,7 +42,7 @@ public abstract class CelestialBody implements ICSVRead {
         return mass;
     }
 
-    // Set
+    //Set
     public void setName(String name) {
         this.name = name;
     }
@@ -54,6 +54,14 @@ public abstract class CelestialBody implements ICSVRead {
     }
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    //Update
+    public void update(CelestialBody newCelestialBody) {
+        setName(newCelestialBody.getName());
+        setRadius(newCelestialBody.getRadius());
+        setMass(newCelestialBody.getMass());
+        setPictureUrl(newCelestialBody.getPictureUrl());
     }
 
     @Override
