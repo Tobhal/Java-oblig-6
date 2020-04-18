@@ -20,7 +20,6 @@ public class Main {
         HashMap<String, Observation> observations = new HashMap<>();
         HashMap<String, Observation> observationsFromFile = new HashMap<>();
 
-
         //Planets generation
         Star arcturus = new Star("Arcturus", "", 7.75E5, 2.27E30, 5500);
         Star rigel = new Star("Rigel", "", 2.72E5, 5.58E29, 2600);

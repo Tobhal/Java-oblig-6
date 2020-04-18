@@ -1,7 +1,22 @@
 ********************
 | Kilder til teori |
 ********************
+- https://github.com/Tobhal/Java-prog-2     -> brukte alle obligene mine til å lese hva jeg har skrevet i teori delen. denne linker til alle
+- Java A Beginner's Guide Boka
 
+
+Jeg brukte litt eksempler og informasjon fra alle disse stedene. Jeg har eksempel ikke noe erfaring med SQL så jeg lånte litt av eksempelet fra kildene
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+- https://www.youtube.com/watch?v=-K7g0MElAeg
+- https://www.youtube.com/watch?v=dAPL7MQGjyM
+- https://www.youtube.com/watch?v=cgVVZMfLjEI&t
+- https://dev.to/matheusgomes062/programming-paradigm-2anb
+- https://dev.to/fannyvieira/the-beauty-of-functional-programming-32ck
+- https://tylermcginnis.com/imperative-vs-declarative-programming/
+- https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0
+- https://www.freecodecamp.org/news/functional-programming-principles-in-javascript-1b8fc6c3563f/
+
+-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
 *********************
 | Kilder til raport |
