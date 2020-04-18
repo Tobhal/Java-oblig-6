@@ -27,7 +27,7 @@ public interface IObservationRepository {
     Planet getPlanet(Observation observation);
     Planet getPlanet(Location location);
 
-    void readFile(String fileName, HashMap<String, Observation> observationHashMap, FileRW.FileTypes fileType);
+
 
     //Create
     void createObservation(Observation observation);
@@ -44,8 +44,9 @@ public interface IObservationRepository {
     //Delete
     void deleteObservation(Observation observation);
 
-    void saveRepository(FileRW.FileTypes fileType);
+    void save(FileRW.FileTypes fileType);
 
+    void read(String fileName, HashMap<String, Observation> observationHashMap, FileRW.FileTypes fileType);
 }
 
 /*

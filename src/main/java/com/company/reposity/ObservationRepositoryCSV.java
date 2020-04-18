@@ -97,11 +97,6 @@ public class ObservationRepositoryCSV implements IObservationRepository {
         return location.getPlanet();
     }
 
-    @Override
-    public void readFile(String fileName, HashMap<String, Observation> observationHashMap, FileRW.FileTypes fileType) {
-
-    }
-
     /*
     Create
      */
@@ -158,7 +153,16 @@ public class ObservationRepositoryCSV implements IObservationRepository {
 
     //Save
     @Override
-    public void saveRepository(FileRW.FileTypes fileType) {
-        FileRW.write("Observation_save", observations, fileType);
+    public void save(FileRW.FileTypes fileType) {
+        Thread thread = new Thread( () -> {
+            FileRW.write("Observation_save", observations, fileType);
+        });
+        thread.start();
+    }
+
+    //Write
+    @Override
+    public void read(String fileName, HashMap<String, Observation> observationHashMap, FileRW.FileTypes fileType) {
+
     }
 }

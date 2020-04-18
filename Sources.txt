@@ -13,21 +13,22 @@
 ***************************
 | Kilder til programering |
 ***************************
+Har brukt kode fra gamle obliger
+
+
+Stacoverflow
+- https://stackoverflow.com/questions/2817695/how-does-java-order-items-in-a-hashmap-or-a-hashtable     -> for å finne ut hvorfor hashMapet var "sortert tilfeldig"
+- https://stackoverflow.com/questions/3395286/remove-last-character-of-a-stringbuilder
+- https://stackoverflow.com/questions/7056959/convert-string-to-equivalent-enum-value
 - https://stackoverflow.com/questions/14926148/java-enum-usage-getting-and-setting
 - https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line
 
-- https://www.geeksforgeeks.org/localdate-format-method-in-java/
 
--https://www.nationalgeographic.org/encyclopedia/biome/
-
+Forelesnings Git
+- https://github.com/larseknu/programmering2_2020/tree/master/Forelesning14_Uke09_MVC_Javalin_Lambda
 - https://github.com/larseknu/programmering2_2020/tree/master/Forelesning15_Uke09_Lambda
-- https://www.geeksforgeeks.org/convert-double-to-integer-in-java/
+- https://github.com/larseknu/programmering2_2020/tree/master/Forelesning13_Uke08_Javalin_Gradle
 
-- https://stackoverflow.com/questions/2817695/how-does-java-order-items-in-a-hashmap-or-a-hashtable     -> for å finne ut hvorfor hashMapet var "sortert tilfeldig"
-
-- https://stackoverflow.com/questions/3395286/remove-last-character-of-a-stringbuilder
-
-- https://stackoverflow.com/questions/7056959/convert-string-to-equivalent-enum-value
 
 JSON (lesing/skriving)
 - https://github.com/larseknu/programmering2_2020/blob/master/Forelesning17_Uke11_JSON_Collections/AfterLecture/01_FilSkriving_JSON/src/main/java/no/hiof/larseknu/json/model/Klasse.java
@@ -39,9 +40,17 @@ JSON (lesing/skriving)
 - https://fasterxml.github.io/jackson-modules-java8/javadoc/datetime/2.9/com/fasterxml/jackson/datatype/jsr310/JavaTimeModule.html
 - https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.10.3
 
+
 Random things
 - https://www.rangen.co.uk/world/planetgen.php
 - https://donjon.bin.sh/scifi/system/index.cgi
 - https://perchance.org/scientific-species-name
 - http://nmsgen.com/#
 - https://www.random.org/geographic-coordinates/
+- https://www.nationalgeographic.org/encyclopedia/biome/
+
+
+Andre sider
+- https://www.geeksforgeeks.org/localdate-format-method-in-java/
+- https://www.geeksforgeeks.org/convert-double-to-integer-in-java/
+- https://www.cs.sjsu.edu/~pearce/modules/lectures/uml2/class/index.htm     -> ULM Class diagram
