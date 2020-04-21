@@ -58,10 +58,23 @@ public class ObservationRepositoryJSON implements IObservationRepository {
     @Override
     public ArrayList<Planet> getAllPlanets() {
         ArrayList<Planet> planetArrayList = new ArrayList<>();
+        ArrayList<String> planets = new ArrayList<>();
 
         for (Observation observation : observations.values()) {
-            planetArrayList.add(observation.getLocation().getPlanet());
+            if (!planets.contains(observation.getLocation().getPlanet().getName())) {
+                planets.add(observation.getLocation().getPlanet().getName());
+                planetArrayList.add(observation.getLocation().getPlanet());
+            }
         }
+
+        /*
+        for (Observation observation : observations.values()) {
+            if (!planetArrayList.contains(observation.getLocation().getPlanet())) {
+                planetArrayList.add(observation.getLocation().getPlanet());
+            }
+        }
+         */
+
         return planetArrayList;
     }
 

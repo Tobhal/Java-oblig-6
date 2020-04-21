@@ -2,16 +2,88 @@
     <div>
         <h1>Create new observation</h1>
         <form class="create" @submit="checkForm" :action=`/api/observations/new` method="post">
+            <h2> Observation </h2>
             <p>
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" v-model="name">
             </p>
-
             <p>
                 <label for="quantity">Quantity</label>
                 <input type="text" name="quantity" id="quantity" v-model="quantity">
             </p>
+            <p>
+                <label for="date">Date</label>
+                <input type="date" name="date" id="date" v-model="date">
+            </p>
+            <p>
+                <label for="image">Image (url)</label>
+                <input type="text" name="image" id="image" v-model="image">
+            </p>
+            <p>
+                <label for="comment">Comment</label>
+                <input type="text" name="comment" id="comment" v-model="comment">
+            </p>
 
+            <h2> Animal </h2>
+            <p>
+                <label for="animal_name">Animal name</label>
+                <input type="text" name="animal_name" id="animal_name" v-model="animal_name">
+            </p>
+            <p>
+                <label for="animal_scientificName">Animal scientific name</label>
+                <input type="text" name="animal_scientificName" id="animal_scientificName" v-model="animal_scientificName">
+            </p>
+            <p>
+                <label for="animal_type">Animal type</label>
+                <select name="animal_type" id="animal_type" v-model="animal_type">
+                    <option value="amphibian" id="amphibian" v-model="animal_type"> Amphibian </option>
+                    <option value="bird" id="bird" v-model="animal_type"> Bird </option>
+                    <option value="invertebrate" id="invertebrate" v-model="animal_type"> Invertebrate </option>
+                </select>
+            </p>
+            <p v-if="animal_type === 'amphibian'">
+                <label for="animal_mod">Amphibian group</label>
+                <input type="text" name="animal_mod" id="animal_mod" v-model="animal_mod">
+            </p>
+            <p v-if="animal_type === 'bird'">
+                <label for="animal_mod">Can fly</label>
+                <input type="checkbox" name="animal_mod" id="animal_mod" v-model="animal_mod">
+            </p>
+            <p v-if="animal_type === 'invertebrate'">
+                <lable for="animal_mod">Invertebrate</lable>
+                <input type="number" name="animal_mod" id="animal_mod" v-model="animal_mod">
+            </p>
+
+            <h2>Location</h2>
+            <p>
+                <lable for="location_planet">Planet</lable>
+                <select name="location_planet" id="location_planet" v-model="location_planet">
+                    <option v-bind:value="planet.name" v-for="planet in planets">{{planet.name}}</option>
+                </select>
+            </p>
+            <p>
+                <label for="location_latitude">Latitude</label>
+                <input type="number" step="any" name="location_latitude" id="location_latitude" v-model="location_latitude">
+            </p>
+            <p>
+                <label for="location_longitude">Longitude</label>
+                <input type="number" step="any" name="location_longitude" id="location_longitude" v-model="location_longitude">
+            </p>
+            <p>
+                <label for="location_biomes">Biome</label>
+                <select multiple name="location_biomes" id="location_biomes" v-model="location_biomes">
+                    <option value="forest">Forest</option>
+                    <option value="grassland">Grassland</option>
+                    <option value="freshwater">Freshwater</option>
+                    <option value="marine">Marine</option>
+                    <option value="desert">Desert</option>
+                    <option value="tundra">Tundra</option>
+                </select>
+            </p>
+
+
+
+<!--
             <p>
                 <label for="animal">Animal</label>
                 <select name="animal" id="animal" v-model="animal">
@@ -25,16 +97,7 @@
                     <option v-bind:value="location.name" v-for="location in locations">{{location.planet.name}}</option>
                 </select>
             </p>
-
-            <p>
-                <label for="date">Date</label>
-                <input type="date" name="date" id="date" v-model="date">
-            </p>
-
-            <p>
-                <label for="comment">Comment</label>
-                <input type="feald" name="comment" id="comment" v-model="comment">
-            </p>
+-->
         </form>
     </div>
 </template>
@@ -45,12 +108,24 @@
             name: null,
             quantity: null,
             image: null,
-            animal: null,
-            date: null,
-            location: null,
             comment: null,
+
+            animal_name: null,
+            animal_scientificName: null,
+            animal_type: null,
+            animal_mod: null,
+
+            date: null,
+
+            location_latitude: null,
+            location_longitude: null,
+            location_biomes: null,
+            location_planet: null,
+
+
             animals: [],
             locations: [],
+            planets: [],
         }),
         created() {
             fetch(`/api/animals`)
@@ -61,6 +136,10 @@
                 .then(res => res.json())
                 .then(res => this.locations = res)
                 .catch(() => alert("error while fetching locations"));
+            fetch('/api/planets')
+                .then(res => res.json())
+                .then(res => this.planets = res)
+                .catch(() => alert("error while fetching planets"));
         },
         methods:{
             checkForm:function (e) {
