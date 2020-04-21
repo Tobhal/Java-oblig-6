@@ -23,6 +23,14 @@ public class Application {
 
         //Pages
         app.get("/observations", new VueComponent("observations-overview"));
+        app.get("/observations/new", new VueComponent("new-observation"));
+
+        app.get("/observations/:observation-name", new VueComponent("observations-detail"));
+        app.get("/observations/:observation-name/update", new VueComponent("update-observation"));
+        app.get("/observations/:observation-name/animal", new VueComponent("animal-detail"));
+
+
+
 
         //Controller
         ObservationController observationController = new ObservationController(new ObservationRepositoryJSON("observation"));
@@ -30,6 +38,24 @@ public class Application {
         //API
         app.get("/api/observations", ctx -> observationController.getObservations(ctx));
         //app.get("api/observation", observationController::getObservations);
+        app.post("/api/observations/new", ctx -> observationController.createObservation(ctx));
+
+
+        app.get("/api/animals", ctx -> observationController.getAnimals(ctx));
+        app.get("/api/locations", ctx -> observationController.getLocations(ctx));
+        app.get("/api/planets", ctx -> observationController.getPlanets(ctx));
+
+
+        app.get("/api/observations/:observation-name", ctx -> observationController.getObservation(ctx));
+        app.get("/api/observations/:observation-name/animal", ctx -> observationController.getAnimal(ctx));
+
+        app.post("/api/observations/:observation-name/update", ctx -> observationController.updateObservation(ctx));
+        app.get("/api/observations/:observation-name/delete", ctx -> observationController.deleteObservation(ctx));
+
+
+
+
+
     }
 }
 /*

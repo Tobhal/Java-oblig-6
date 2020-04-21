@@ -42,7 +42,7 @@ public interface IObservationRepository {
     void updatePlanet(Planet planet, Planet newPlanet);
 
     //Delete
-    void deleteObservation(Observation observation);
+    void deleteObservation(String observationName);
 
     void save(FileRW.FileTypes fileType);
 

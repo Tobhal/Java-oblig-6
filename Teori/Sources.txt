@@ -45,6 +45,10 @@ Forelesnings Git
 - https://github.com/larseknu/programmering2_2020/tree/master/Forelesning13_Uke08_Javalin_Gradle
 
 
+Presentasjoner
+https://hiof.instructure.com/courses/2907/files/folder/Presentasjoner?preview=631577
+
+
 JSON (lesing/skriving)
 - https://github.com/larseknu/programmering2_2020/blob/master/Forelesning17_Uke11_JSON_Collections/AfterLecture/01_FilSkriving_JSON/src/main/java/no/hiof/larseknu/json/model/Klasse.java
 - https://stackoverflow.com/questions/20837856/can-not-deserialize-instance-of-java-util-arraylist-out-of-start-object-token
@@ -54,7 +58,7 @@ JSON (lesing/skriving)
 - https://codeboje.de/jackson-java-8-datetime-handling/
 - https://fasterxml.github.io/jackson-modules-java8/javadoc/datetime/2.9/com/fasterxml/jackson/datatype/jsr310/JavaTimeModule.html
 - https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.10.3
-
+- https://stackoverflow.com/questions/11531298/jackson-objectmapping-not-getting-json-data
 
 Random things
 - https://www.rangen.co.uk/world/planetgen.php
@@ -69,3 +73,6 @@ Andre sider
 - https://www.geeksforgeeks.org/localdate-format-method-in-java/
 - https://www.geeksforgeeks.org/convert-double-to-integer-in-java/
 - https://www.cs.sjsu.edu/~pearce/modules/lectures/uml2/class/index.htm     -> ULM Class diagram
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+- https://www.w3schools.com/html/html_form_elements.asp
+- https://forum.vuejs.org/t/how-to-work-with-objects-as-select-option-values/45490/4

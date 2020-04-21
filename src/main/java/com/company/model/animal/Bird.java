@@ -1,5 +1,7 @@
 package com.company.model.animal;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Bird extends Animal {
     private boolean canFly;
 
@@ -11,6 +13,7 @@ public class Bird extends Animal {
     }
 
     //Get
+    @JsonProperty
     public boolean canFly() {
         return canFly;
     }

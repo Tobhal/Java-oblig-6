@@ -148,8 +148,9 @@ public class ObservationRepositoryJSON implements IObservationRepository {
     Delete
      */
     @Override
-    public void deleteObservation(Observation observation) {
-        observations.remove(observation.getAnimal().getScientificName());
+    public void deleteObservation(String observationName) {
+        observations.remove(observationName);
+        save(FileRW.FileTypes.JSON);
     }
 
     //Save

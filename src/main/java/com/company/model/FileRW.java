@@ -110,7 +110,7 @@ public class FileRW {
                         observation.setAnimal(animal);
                         observation.setLocation(location);
 
-                        observationMap.put(animal.getScientificName(), observation);
+                        observationMap.put(observation.getName(), observation);
                     }
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -134,7 +134,7 @@ public class FileRW {
                 observations.addAll(Arrays.asList(observations1));
 
                 for (Observation observation : observations) {
-                    observationMap.put(observation.getAnimal().getScientificName(), observation);
+                    observationMap.put(observation.getName(), observation);
                 }
                 break;
         }
