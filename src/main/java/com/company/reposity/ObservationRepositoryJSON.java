@@ -80,7 +80,6 @@ public class ObservationRepositoryJSON implements IObservationRepository {
 
     @Override
     public Observation getObservation(String name) {
-        System.out.println(observations.values());
         return observations.get(name);
     }
 

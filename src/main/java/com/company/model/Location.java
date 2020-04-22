@@ -89,7 +89,7 @@ public class Location implements ICSVRead{
 
     @Override
     public String toString() {
-        return planet.getName() + " (" + latitude + ", " + longitude + ") inside the biomes:" + biomes;
+        return (planet == null ? "" : planet.getName()) + " (" + latitude + ", " + longitude + ") inside the biomes:" + biomes;
     }
 
     public String toCSV() {

@@ -100,13 +100,52 @@ public class ObservationController {
 
         Location location = new Location(locationLongitude, locationLatitude,new ArrayList<Location.Biome>(){{add(Location.Biome.valueOf(locationBiomes));}}, planet);
 
-        observationRepository.createObservation(new Observation( quantity, name, animal, location, date, image, commnet ));
+        observationRepository.createObservation(new Observation(quantity, name, animal, location, date, image, commnet));
 
         observationRepository.save(FileRW.FileTypes.JSON);
     }
 
     public void updateObservation(Context context) {
+        String originalObservation = context.pathParam("observation-name");
 
+        int quantity = context.formParam("quantity").equals("") ? 0 : Integer.parseInt(context.formParam("quantity"));
+        String dateString = context.formParam("theDate").equals("") ? null : context.formParam("theDate");
+        String image = context.formParam("image").equals("") ? null : context.formParam("image");
+        String comment = context.formParam("comment").equals("") ? null : context.formParam("comment");
+
+        String animalName = context.formParam("animal");
+
+        String locationPlanet = context.formParam("location_planet");
+        String locationLatitude = context.formParam("location_latitude").equals("") ? null : context.formParam("location_latitude");
+        String locationLongitude = context.formParam("location_longitude").equals("") ? null : context.formParam("location_longitude");
+        String locationBiome = context.formParam("location_biome");
+
+
+        Animal animal = null;
+        Location location = null;
+
+        if (animalName != null)
+            for (Animal animal1 : observationRepository.getAllAnimals())
+                if (animal1.getName().equals(animalName))
+                    animal = animal1;
+        if (!(locationPlanet == null && locationLatitude == null && locationLongitude == null && locationBiome == null)) {
+            location = new Location();
+            if (locationPlanet != null)
+                location.setPlanet(observationRepository.getPlanet(locationPlanet));
+            if (locationLongitude != null)
+                location.setLongitude(Double.parseDouble(locationLongitude));
+            if (locationLatitude != null)
+                location.setLatitude(Double.parseDouble(locationLatitude));
+            if (locationBiome != null)
+                location.setBiomes(new ArrayList<Location.Biome>(){{add(Location.Biome.valueOf(locationBiome.toUpperCase()));}});
+        }
+
+        // Maybe try to implement update of location...
+        Observation observation = new Observation(quantity, null, animal, null, (dateString == null ? null : LocalDate.parse(dateString)), image, comment);
+
+        observationRepository.updateObservation(observationRepository.getObservation(originalObservation), observation);
+
+        System.out.println(observation);
     }
 
     public void getAnimals(Context context) {

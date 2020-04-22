@@ -119,7 +119,7 @@ public class Observation implements ICSVRead{
     public String toString() {
         return "\nObservation (" + name + " (id:" + id + ")) was done " + date + " at location:\n\t" +
                 location + "\n" +
-                "on the animal: " + animal.getName() + "\n" +
+                "on the animal: " + (animal == null ? "" : animal.getName()) + "\n" +
                 "Comment:\n" + comment + "\n\n";
     }
 

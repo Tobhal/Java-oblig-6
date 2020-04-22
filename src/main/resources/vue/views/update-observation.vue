@@ -1,12 +1,9 @@
-<template id="new-observation">
+<template id="update-observation">
     <div>
-        <h1>Create new observation</h1>
-        <form class="create" @submit="checkForm" :action=`/api/observations/new` method="post">
+        <h1>Update the info to {{observation.name}}</h1>
+        <form class="update" @submit="checkForm" :action=`/api/observations/${observation.name}/update` method="post">
             <h2> Observation </h2>
-            <p>
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" v-model="name">
-            </p>
+            <p> Leave blank if you do not want to change the value </p>
             <p>
                 <label for="quantity">Quantity</label>
                 <input type="number" name="quantity" id="quantity" v-model="quantity">
@@ -23,38 +20,14 @@
                 <label for="comment">Comment</label>
                 <input type="text" name="comment" id="comment" v-model="comment">
             </p>
-
-            <h2> Animal </h2>
             <p>
-                <label for="animal_name">Animal name</label>
-                <input type="text" name="animal_name" id="animal_name" v-model="animal_name">
-            </p>
-            <p>
-                <label for="animal_scientificName">Animal scientific name</label>
-                <input type="text" name="animal_scientificName" id="animal_scientificName" v-model="animal_scientificName">
-            </p>
-            <p>
-                <label for="animal_type">Animal type</label>
-                <select name="animal_type" id="animal_type" v-model="animal_type">
-                    <option value="amphibian" id="amphibian" v-model="animal_type"> Amphibian </option>
-                    <option value="bird" id="bird" v-model="animal_type"> Bird </option>
-                    <option value="invertebrate" id="invertebrate" v-model="animal_type"> Invertebrate </option>
+                <label for="animal">Animal</label>
+                <select name="animal" id="animal" v-model="animal">
+                    <option v-bind:value="animal.name" v-for="animal in animals">{{animal.name}}</option>
                 </select>
             </p>
-            <p v-if="animal_type === 'amphibian'">
-                <label for="animal_mod">Amphibian group</label>
-                <input type="text" name="animal_mod" id="animal_mod" v-model="animal_mod">
-            </p>
-            <p v-if="animal_type === 'bird'">
-                <label for="animal_mod">Can fly</label>
-                <input type="checkbox" name="animal_mod" id="animal_mod" v-model="animal_mod">
-            </p>
-            <p v-if="animal_type === 'invertebrate'">
-                <lable for="animal_mod">Invertebrate</lable>
-                <input type="number" name="animal_mod" id="animal_mod" v-model="animal_mod">
-            </p>
 
-            <h2>Location</h2>
+            <h2> Location </h2>
             <p>
                 <lable for="location_planet">Planet</lable>
                 <select name="location_planet" id="location_planet" v-model="location_planet">
@@ -80,43 +53,20 @@
                     <option value="tundra">Tundra</option>
                 </select>
             </p>
-
             <p>
-                <input type="submit" value="Create">
+                <input type="submit" value="Update">
             </p>
-
-<!--
-            <p>
-                <label for="animal">Animal</label>
-                <select name="animal" id="animal" v-model="animal">
-                    <option v-bind:value="animal.name" v-for="animal in animals">{{animal.name}}</option>
-                </select>
-            </p>
-
-            <p>
-                <label for="location">Location</label>
-                <select name="location" id="location" v-model="location">
-                    <option v-bind:value="location.name" v-for="location in locations">{{location.planet.name}}</option>
-                </select>
-            </p>
--->
         </form>
     </div>
 </template>
 <script>
-    Vue.component("new-observation", {
-        template: "#new-observation",
+    Vue.component("update-observation", {
+        template: "#update-observation",
         data: () => ({
             name: null,
             quantity: null,
             image: null,
             comment: null,
-
-            animal_name: null,
-            animal_scientificName: null,
-            animal_type: null,
-            animal_mod: null,
-
             theDate: null,
 
             location_latitude: null,
@@ -124,12 +74,20 @@
             location_biomes: [],
             location_planet: null,
 
+            animal: null,
 
             animals: [],
             locations: [],
             planets: [],
+
+            observation: null,
         }),
         created() {
+            const observationName = this.$javalin.pathParams["observation-name"];
+            fetch(`/api/observations/${observationName}`)
+                .then(res => res.json())
+                .then(res => this.observation = res)
+                .catch(() => alert("error while fetching observation"))
             fetch(`/api/animals`)
                 .then(res => res.json())
                 .then(res => this.animals = res)
@@ -152,11 +110,5 @@
     })
 </script>
 <style>
-    p {
-        height: auto;
-    }
 
-    select {
-        margin: 0;
-    }
 </style>
