@@ -81,10 +81,14 @@ public class Location implements ICSVRead{
 
     //Update
     public void update(Location newLocation) {
-        setLongitude(newLocation.getLongitude());
-        setLatitude(newLocation.getLatitude());
-        setPlanet(newLocation.getPlanet());
-        setBiomes(newLocation.getBiomes());
+        if (newLocation.getLatitude() != 0)
+            setLongitude(newLocation.getLongitude());
+        if (newLocation.getLongitude() != 0)
+            setLatitude(newLocation.getLatitude());
+        if (newLocation.getPlanet() != null)
+            setPlanet(newLocation.getPlanet());
+        if (newLocation.getBiomes() != null)
+            setBiomes(newLocation.getBiomes());
     }
 
     @Override

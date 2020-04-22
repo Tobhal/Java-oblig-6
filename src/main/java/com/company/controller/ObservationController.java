@@ -46,9 +46,15 @@ public class ObservationController {
         context.json(observationRepository.getObservation(observationName).getDate());
     }
 
+    public void getPlanet(Context context) {
+        String observationName = context.pathParam("observation-name");
+        context.json(observationRepository.getObservation(observationName).getLocation().getPlanet());
+    }
+
     public void deleteObservation(Context context) {
         String observationName = context.pathParam("observation-name");
         observationRepository.deleteObservation(observationName);
+        context.redirect("/observations");
     }
 
     public void createObservation(Context context) {
@@ -103,6 +109,7 @@ public class ObservationController {
         observationRepository.createObservation(new Observation(quantity, name, animal, location, date, image, commnet));
 
         observationRepository.save(FileRW.FileTypes.JSON);
+        context.redirect("/observations/" + name);
     }
 
     public void updateObservation(Context context) {
@@ -132,20 +139,31 @@ public class ObservationController {
             location = new Location();
             if (locationPlanet != null)
                 location.setPlanet(observationRepository.getPlanet(locationPlanet));
+            else
+                location.setPlanet(null);
+
             if (locationLongitude != null)
                 location.setLongitude(Double.parseDouble(locationLongitude));
+            else
+                location.setLongitude(0);
+
             if (locationLatitude != null)
                 location.setLatitude(Double.parseDouble(locationLatitude));
+            else
+                location.setLatitude(0);
+
             if (locationBiome != null)
                 location.setBiomes(new ArrayList<Location.Biome>(){{add(Location.Biome.valueOf(locationBiome.toUpperCase()));}});
+            else
+                location.setBiomes(null);
         }
 
-        // Maybe try to implement update of location...
-        Observation observation = new Observation(quantity, null, animal, null, (dateString == null ? null : LocalDate.parse(dateString)), image, comment);
+        Observation observation = new Observation(quantity, null, animal, location, (dateString == null ? null : LocalDate.parse(dateString)), image, comment);
 
         observationRepository.updateObservation(observationRepository.getObservation(originalObservation), observation);
+        observationRepository.save(FileRW.FileTypes.JSON);
 
-        System.out.println(observation);
+        context.redirect("/observations/" + context.pathParam("observation-name"));
     }
 
     public void getAnimals(Context context) {

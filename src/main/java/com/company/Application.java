@@ -17,6 +17,8 @@ public class Application {
         ObservationRepositoryJSON observationRepositoryJSON = new ObservationRepositoryJSON("observation");
          */
 
+        String fileName = "observation_save";
+
         Javalin app = Javalin.create().start();
         app.config.enableWebjars();
         app.before("/", ctx -> ctx.redirect("/observations"));
@@ -28,12 +30,10 @@ public class Application {
         app.get("/observations/:observation-name", new VueComponent("observations-detail"));
         app.get("/observations/:observation-name/update", new VueComponent("update-observation"));
         app.get("/observations/:observation-name/animal", new VueComponent("animal-detail"));
-
-
-
+        app.get("/observations/:observation-name/planet", new VueComponent("planet-detail"));
 
         //Controller
-        ObservationController observationController = new ObservationController(new ObservationRepositoryJSON("observation_save"));
+        ObservationController observationController = new ObservationController(new ObservationRepositoryJSON((FileRW.canReadWrite(fileName, FileRW.FileTypes.JSON) ? fileName : "Observation")));
 
         //API
         app.get("/api/observations", ctx -> observationController.getObservations(ctx));
@@ -48,6 +48,7 @@ public class Application {
 
         app.get("/api/observations/:observation-name", ctx -> observationController.getObservation(ctx));
         app.get("/api/observations/:observation-name/animal", ctx -> observationController.getAnimal(ctx));
+        app.get("/api/observations/:observation-name/planet", ctx -> observationController.getPlanet(ctx));
 
         app.post("/api/observations/:observation-name/update", ctx -> observationController.updateObservation(ctx));
         app.get("/api/observations/:observation-name/delete", ctx -> observationController.deleteObservation(ctx));

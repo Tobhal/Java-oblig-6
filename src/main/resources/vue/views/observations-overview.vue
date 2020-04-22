@@ -2,6 +2,13 @@
     <div>
         <h1>Observations</h1>
         <ul class="observations-overview-list">
+            <li>
+                <div class="single-observation-container">
+                    <a href="/observations/new" class="link-to-observation-details">
+                        <h2>Create new observation</h2>
+                    </a>
+                </div>
+            </li>
             <li v-for="observation in observations">
                 <a :href="`/observations/${observation.name.trim()}`" class="link-to-observation-details">
                     <div class="single-observation-container" >

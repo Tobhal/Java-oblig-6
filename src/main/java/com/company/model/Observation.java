@@ -107,8 +107,10 @@ public class Observation implements ICSVRead{
         if (newObservation.getAnimal() != null)
             setAnimal(newObservation.getAnimal());
 
-        if (newObservation.getLocation() != null)
-            setLocation(newObservation.getLocation());
+        if (newObservation.getLocation() != null) {
+            Location location = getLocation();
+            location.update(newObservation.getLocation());
+        }
 
         if (newObservation.getDate() != null)
             setDate(newObservation.getDate());

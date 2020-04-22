@@ -43,7 +43,11 @@
             </p>
             <p v-if="animal_type === 'amphibian'">
                 <label for="animal_mod">Amphibian group</label>
-                <input type="text" name="animal_mod" id="animal_mod" v-model="animal_mod">
+                <select name="animal_mod" id="animal_mod" v-model="animal_mod">
+                    <option value="AMPHIBIAN">Amphibian</option>
+                    <option value="REPTILIA">Reptilia</option>
+                    <option value="MAMMALIA">Mammalia</option>
+                </select>
             </p>
             <p v-if="animal_type === 'bird'">
                 <label for="animal_mod">Can fly</label>

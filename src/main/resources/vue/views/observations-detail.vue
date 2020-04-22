@@ -20,6 +20,8 @@
         </p>
 
         <p id="comment">Comment: <br> {{observation.comment}}</p>
+        <a :href="`/observations/${observation.name}/update`">Update</a>
+        <a :href="`/api/observations/${observation.name}/delete`">Delete</a>
     </div>
 </template>
 <script>
