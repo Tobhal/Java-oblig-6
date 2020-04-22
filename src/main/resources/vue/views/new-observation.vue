@@ -9,11 +9,11 @@
             </p>
             <p>
                 <label for="quantity">Quantity</label>
-                <input type="text" name="quantity" id="quantity" v-model="quantity">
+                <input type="number" name="quantity" id="quantity" v-model="quantity">
             </p>
             <p>
-                <label for="date">Date</label>
-                <input type="date" name="date" id="date" v-model="date">
+                <label for="theDate">Date</label>
+                <input type="date" name="theDate" id="theDate" v-model="theDate">
             </p>
             <p>
                 <label for="image">Image (url)</label>
@@ -71,7 +71,7 @@
             </p>
             <p>
                 <label for="location_biomes">Biome</label>
-                <select multiple name="location_biomes" id="location_biomes" v-model="location_biomes">
+                <select name="location_biomes" id="location_biomes" v-model="location_biomes">
                     <option value="forest">Forest</option>
                     <option value="grassland">Grassland</option>
                     <option value="freshwater">Freshwater</option>
@@ -81,7 +81,9 @@
                 </select>
             </p>
 
-
+            <p>
+                <input type="submit" value="newObservation">
+            </p>
 
 <!--
             <p>
@@ -115,11 +117,11 @@
             animal_type: null,
             animal_mod: null,
 
-            date: null,
+            theDate: null,
 
             location_latitude: null,
             location_longitude: null,
-            location_biomes: null,
+            location_biomes: [],
             location_planet: null,
 
 

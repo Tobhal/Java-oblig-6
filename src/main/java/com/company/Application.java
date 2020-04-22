@@ -33,7 +33,7 @@ public class Application {
 
 
         //Controller
-        ObservationController observationController = new ObservationController(new ObservationRepositoryJSON("observation"));
+        ObservationController observationController = new ObservationController(new ObservationRepositoryJSON("observation_save"));
 
         //API
         app.get("/api/observations", ctx -> observationController.getObservations(ctx));

@@ -1,7 +1,16 @@
 package com.company.controller;
 
+import com.company.model.FileRW;
+import com.company.model.Location;
+import com.company.model.Observation;
+import com.company.model.animal.*;
+import com.company.model.planetSystem.Planet;
 import com.company.reposity.IObservationRepository;
 import io.javalin.http.Context;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class ObservationController {
     private IObservationRepository observationRepository;
@@ -11,6 +20,7 @@ public class ObservationController {
     }
 
     public void getObservations(Context context) {
+        //observationRepository.read("Observation_save", observationRepository.getAllObservationHash(), FileRW.FileTypes.JSON);
         context.json(observationRepository.getAllObservations());
     }
 
@@ -42,7 +52,57 @@ public class ObservationController {
     }
 
     public void createObservation(Context context) {
+        // Observation
+        String name = context.formParam("name");
+        int quantity = Integer.parseInt(Objects.requireNonNull(context.formParam("quantity")));
+        String dateS = context.formParam("theDate");
+        String image = context.formParam("image");
+        String commnet = context.formParam("comment");
 
+        assert dateS != null;
+        LocalDate date = LocalDate.parse(dateS);
+
+        // Animal
+        String animalName = context.formParam("animal_name");
+        String animalScientificName = context.formParam("animal_scientificName");
+        String animalType = context.formParam("animal_type");
+        String animalMod = context.formParam("animal_mod");
+
+        Animal animal;
+
+        switch (Objects.requireNonNull(animalType)) {
+            case "amphibian":
+                animal = new Amphibian(animalName, animalScientificName, Amphibian.Groups.valueOf(animalMod));
+                break;
+            case "bird":
+                boolean animalModBool = false;
+                assert animalMod != null;
+                if (animalMod.equals("on"))
+                    animalModBool = true;
+
+                animal = new Bird(animalName, animalScientificName, animalModBool);
+                break;
+            case "invertebrate":
+                assert animalMod != null;
+                animal = new Invertebrate(animalName, animalScientificName, Integer.parseInt(animalMod));
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + animalMod);
+        }
+
+        // Location
+        String locationPlanet = context.formParam("location_planet");
+        double locationLongitude = Double.parseDouble(Objects.requireNonNull(context.formParam("location_longitude")));
+        double locationLatitude = Double.parseDouble(Objects.requireNonNull(context.formParam("location_latitude")));
+        String locationBiomes = Objects.requireNonNull(context.formParam("location_biomes")).toUpperCase();
+
+        Planet planet = observationRepository.getPlanet(locationPlanet);
+
+        Location location = new Location(locationLongitude, locationLatitude,new ArrayList<Location.Biome>(){{add(Location.Biome.valueOf(locationBiomes));}}, planet);
+
+        observationRepository.createObservation(new Observation( quantity, name, animal, location, date, image, commnet ));
+
+        observationRepository.save(FileRW.FileTypes.JSON);
     }
 
     public void updateObservation(Context context) {
