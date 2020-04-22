@@ -91,7 +91,7 @@ public class Main {
         observations.put(langust.getScientificName(), langustObservation);
         observations.put(eidolonhelvum.getScientificName(), eidolonhelvumObservation);
 
-        // System.out.println(observations);
+        System.out.println(observations);
 
 
         //Saving to file
