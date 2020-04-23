@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public interface IObservationRepository {
-
     //Read
     ArrayList<Observation> getAllObservations();
     HashMap<String, Observation> getAllObservationHash();
@@ -26,8 +25,6 @@ public interface IObservationRepository {
     Planet getPlanet(String name);
     Planet getPlanet(Observation observation);
     Planet getPlanet(Location location);
-
-
 
     //Create
     void createObservation(Observation observation);
@@ -45,13 +42,5 @@ public interface IObservationRepository {
     void deleteObservation(String observationName);
 
     void save(FileRW.FileTypes fileType);
-
     void read(String fileName, HashMap<String, Observation> observationHashMap, FileRW.FileTypes fileType);
 }
-
-/*
-TODO: Add Read
-TODO: Add Create
-TODO: Add Update
-TODO: Add Delete
-*/
